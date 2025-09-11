@@ -1,0 +1,9 @@
+#file
+purwadika.json
+.env
+__pycache__
+
+#folder
+logs/
+auth/
+data/ 
