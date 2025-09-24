@@ -1,0 +1,93 @@
+version: 2
+
+sources:
+  - name: staging
+    description: "Raw dataset from ecommerce pipeline"
+    database: purwadika
+    schema: jcdeol005_finalproject_faza_staging
+
+    tables:
+      - name: products
+        description: "Raw products data"
+        columns:
+          - name: product_id
+            tests: [not_null, unique]
+          - name: name
+            tests: [not_null]
+          - name: category
+            tests: [not_null]
+          - name: price
+            tests:
+              - not_null
+              - dbt_utils.expression_is_true:
+                  expression: "price > 0"
+
+      - name: customers
+        description: "Raw customers data"
+        columns:
+          - name: customer_id
+            tests: [not_null, unique]
+          - name: email
+            tests: 
+              - not_null
+              - unique
+          - name: full_name
+            tests: [not_null]
+
+      - name: addresses
+        description: "Raw addresses data"
+        columns:
+          - name: address_id
+            tests: [not_null, unique]
+          - name: customer_id
+            tests: [not_null]
+
+      - name: orders
+        description: "Raw orders data"
+        columns:
+          - name: order_id
+            tests: [not_null, unique]
+          - name: customer_id
+            tests: [not_null]
+          - name: order_date
+            tests: [not_null]
+          - name: total_amount
+            tests:
+              - not_null
+              - dbt_utils.expression_is_true:
+                  expression: "total_amount >= 0"
+
+      - name: order_items
+        description: "Raw order items data"
+        columns:
+          - name: order_item_id
+            tests: [not_null, unique]
+          - name: order_id
+            tests: [not_null]
+          - name: product_id
+            tests: [not_null]
+          - name: quantity
+            tests:
+              - not_null
+              - dbt_utils.expression_is_true:
+                  expression: "quantity > 0"
+          - name: item_total
+            tests:
+              - not_null
+              - dbt_utils.expression_is_true:
+                  expression: "item_total >= 0"
+
+      - name: payments
+        description: "Raw payments data"
+        columns:
+          - name: payment_id
+            tests: [not_null, unique]
+          - name: order_id
+            tests: [not_null]
+          - name: payment_method
+            tests: [not_null]
+          - name: amount
+            tests:
+              - not_null
+              - dbt_utils.expression_is_true:
+                  expression: "amount >= 0"

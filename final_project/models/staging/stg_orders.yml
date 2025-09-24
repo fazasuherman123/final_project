@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging table for orders"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ["pending", "shipped", "completed", "cancelled"]

@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: daily_summary
+    description: "Daily revenue summary"
+    columns:
+      - name: order_date
+        description: "Date of the orders"
+      - name: total_quantity
+        description: "Total quantity sold"
+      - name: total_revenue
+        description: "Total revenue per day"

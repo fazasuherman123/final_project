@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimensi produk."
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "price > 0"

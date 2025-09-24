@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: "Staging table for addresses"
+    columns:
+      - name: address_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+

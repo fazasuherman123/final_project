@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: models
+    description: "Dimension and Fact tables"
+    database: purwadika
+    schema: jcdeol005_finalproject_faza_model
+    tables:
+      - name: dim_customers
+        description: "Customer dimension"
+      - name: dim_products
+        description: "Product dimension"
+      - name: dim_payments
+        description: "Payment dimension"
+      - name: dim_addresses
+        description: "Address dimension"
+      - name: fact_order_items
+        description: "Fact table for order items"

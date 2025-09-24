@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Fact table berisi informasi transaksi order."
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: total_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "total_amount >= 0"

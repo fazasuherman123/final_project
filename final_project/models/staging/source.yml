@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw dataset from ecommerce pipeline"
+    database: purwadika
+    schema: jcdeol005_finalproject_faza_raw   
+    tables:
+      - name: products
+        description: "Raw products data"
+      - name: customers
+        description: "Raw customers data"
+      - name: addresses
+        description: "Raw addresses data"
+      - name: orders
+        description: "Raw orders data"
+      - name: order_items
+        description: "Raw order items data"
+      - name: payments
+        description: "Raw payments data"

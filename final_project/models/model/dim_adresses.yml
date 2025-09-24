@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_addresses
+    description: "Dimensi alamat customer."
+    columns:
+      - name: address_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging table for customers"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: email
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ["active", "inactive"]

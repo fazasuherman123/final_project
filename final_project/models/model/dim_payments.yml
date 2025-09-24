@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_payments
+    description: "Dimensi metode pembayaran."
+    columns:
+      - name: payment_id
+        tests: [not_null, unique]
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fact_orders')
+              field: order_id
+      - name: payment_method
+        tests: [not_null]

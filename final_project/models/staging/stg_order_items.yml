@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_order_items
+    description: "Staging table for order items"
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
