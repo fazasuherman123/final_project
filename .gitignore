@@ -2,8 +2,14 @@
 purwadika.json
 .env
 __pycache__
+profiles.yml
 
 #folder
 logs/
 auth/
-data/ 
+data/
+tests/
+snapshots/
+seeds/
+analyses/
+config/
