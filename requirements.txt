@@ -1,0 +1,9 @@
+apache-airflow-providers-celery
+apache-airflow-providers-docker==2.7.0
+apache-airflow-providers-fab
+apache-airflow-providers-postgres
+dbt-bigquery
+google-cloud-bigquery
+polars
+faker
+flask-limiter==3.5.0
